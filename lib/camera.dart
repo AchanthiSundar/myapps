@@ -3,6 +3,12 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+void main(){
+  runApp(const MaterialApp(
+    home: HomePage(),
+  ));
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,7 +58,7 @@ class _CameraPageState extends State<CameraPage> {
   @override
   void initState() {
     super.initState();
-    initCamera(widget.cameras![0]);
+    initCamera(widget.cameras![1]);
   }
 
   Future takePicture() async {
@@ -151,6 +157,11 @@ class PreviewPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Preview Page')),
       body: Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
+          // Transform(
+          //   alignment: Alignment.center,
+          //   transform: Matrix4.rotationY(math.pi),
+          //   child: Image.file(File(picture.path), fit: BoxFit.cover, width: 250),
+          // ),
           Image.file(File(picture.path), fit: BoxFit.cover, width: 250),
           const SizedBox(height: 24),
           Text(picture.name)
